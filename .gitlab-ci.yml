@@ -63,38 +63,11 @@ test:
 #   only:
 #     - master
 
-build-StandaloneLinux64:
-  <<: *build
-  variables:
-    BUILD_TARGET: StandaloneLinux64
-
-build-StandaloneOSX:
-  <<: *build
-  variables:
-    BUILD_TARGET: StandaloneOSX
-
-#Note: build target names changed in recent versions, use this for versions < 2017.2:
-# build-StandaloneOSXUniversal:
-#   <<: *build
-#   variables:
-#     BUILD_TARGET: StandaloneOSXUniversal
-
-build-StandaloneWindows64:
-  <<: *build
-  variables:
-    BUILD_TARGET: StandaloneWindows64
-
 build-WebGL:
   <<: *build
   variables:
     BUILD_TARGET: WebGL
     
-build-android:
-  <<: *build
-  image: gableroux/unity3d:2019.1.14f1-android
-  variables:
-    BUILD_TARGET: Android
-
 pages:
   image: alpine:latest
   stage: deploy
