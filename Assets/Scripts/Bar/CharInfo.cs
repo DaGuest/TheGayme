@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharInfo : MonoBehaviour {
     string naam;
+    [SerializeField] int health  = 10;
     [SerializeField] Sprite sprite = null;
     List<Action> actions = new List<Action>();
     [SerializeField] string[] actionNamen;
@@ -28,6 +29,10 @@ public class CharInfo : MonoBehaviour {
 
     public string GetNaam() {
         return naam;
+    }
+
+    public int GetHealth() {
+        return health;
     }
 
     public Sprite GetSprite() {

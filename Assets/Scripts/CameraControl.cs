@@ -8,13 +8,16 @@ public class CameraControl : MonoBehaviour {
 	public float rightBorder = 8.5f;
 	public float upBorder = 3;
 	public float downBorder = 0;
+	bool isMoveable = true;
 	
 	void Awake() {
 		Move();
 	}
 
 	void Update () {
-		Move();
+		if (isMoveable) {
+			Move();
+		}
 	}
 
 	void Move() {
@@ -25,6 +28,7 @@ public class CameraControl : MonoBehaviour {
 	}
 
 	public void Zoom(float sec, float targetSize, Vector3 target) {
+		isMoveable = false;
 		StartCoroutine(ZoomIn(sec, targetSize, target));
 	}
 

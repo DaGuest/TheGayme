@@ -199,6 +199,6 @@ public class VersierController : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		transitionAnimator.SetTrigger("end");
 		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene("Bar");
 	}
 }

@@ -32,6 +32,6 @@ public class BarController : MonoBehaviour {
     IEnumerator IStartBattle() {
         battleAnimator.SetTrigger("battle");
         yield return new WaitForSeconds(3.5f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Versier");
     }
 }

@@ -1028,7 +1028,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2865325506229041916, guid: a9fbfd86d446c0d4b9b6d5ee7d6a5d32,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1086,7 +1086,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.1, y: 4.2}
+    oldSize: {x: 4.1, y: 4.3}
     newSize: {x: 4.1, y: 4.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3016,7 +3016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: 0}
-  down: {fileID: 455161739}
+  down: {fileID: 0}
   left: {fileID: 0}
   right: {fileID: 403781521}
   sceneToLoad: GOG
@@ -5018,7 +5018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: 0}
-  down: {fileID: 776066679}
+  down: {fileID: 0}
   left: {fileID: 67133758}
   right: {fileID: 0}
   sceneToLoad: Bar

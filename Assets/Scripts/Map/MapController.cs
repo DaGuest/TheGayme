@@ -6,6 +6,7 @@ public class MapController : MonoBehaviour {
     public MapPlayer player;
 
     void Awake() {
+        Cursor.visible = false;
         Transform playerTransform = player.GetComponent<Transform>();
         Vector3 startPosition = InfoHolder.GetMapPosition();
         if (startPosition != Vector3.zero) {

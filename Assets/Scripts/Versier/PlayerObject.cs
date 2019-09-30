@@ -25,6 +25,7 @@ public class PlayerObject : MonoBehaviour {
 	public void SetCharInfo(CharInfo charInfo) {
 		this.charInfo = charInfo;
 		gameObject.GetComponent<SpriteRenderer>().sprite = charInfo.GetSprite();
+		health = maxHealth = charInfo.GetHealth();
 	}
 
 	public string GetNaam() {
