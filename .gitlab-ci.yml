@@ -1,4 +1,4 @@
-image: gableroux/unity3d:2019.2.5f1
+image: gableroux/unity3d:2019.2.5f1-webgl
 
 stages:
   - build_and_test
@@ -8,7 +8,7 @@ variables:
   BUILD_NAME: TheGayme
 
 .unity_before_script: &unity_before_script
-  before_script:
+  before_script:  
     - chmod +x ./ci/before_script.sh && ./ci/before_script.sh
 
 .cache: &cache
