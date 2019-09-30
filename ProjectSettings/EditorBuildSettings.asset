@@ -11,3 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Versier.unity
     guid: 36c60044cb9489749b8bed2635af7d00
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 8b068d1ebcff43046bfe4b72132ab52f
+  - enabled: 1
+    path: Assets/Scenes/GOG.unity
+    guid: 303d94d74c96fe844af92121caa43be5
+  m_configObjects: {}

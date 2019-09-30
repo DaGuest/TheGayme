@@ -10,7 +10,6 @@ public class HealthBar : UIMover {
 	[SerializeField] Text naamTekst;
 
 	Slider healthSlider;
-	string naam = "GEZA";
 
 	void Awake() {
 		healthSlider = gameObject.GetComponentInChildren<Slider>();
@@ -21,7 +20,7 @@ public class HealthBar : UIMover {
 	}
 
 	IEnumerator SlideHealth(float value) {
-		while(healthSlider.value > value) {
+		while(healthSlider.value > value && healthSlider.value > 0) {
 			healthSlider.value -= 0.01f; 
 			ChangeSliderColor();
 			yield return new WaitForSeconds(0.01f);

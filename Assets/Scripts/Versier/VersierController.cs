@@ -7,9 +7,9 @@ public class VersierController : MonoBehaviour {
 	[SerializeField] HealthBar playerHealthBar;
 	[SerializeField] HealthBar tegenstanderHealthBar;
 	[SerializeField] Window windowGroot;
-	[SerializeField] Menu mainMenu;
-	[SerializeField] Menu flirtMenu;
-	[SerializeField] Menu itemMenu;
+	[SerializeField] Menu mainMenu = null;
+	[SerializeField] Menu flirtMenu = null;
+	[SerializeField] Menu itemMenu = null;
 	[SerializeField] PlayerObject player;
 	[SerializeField] PlayerObject tegenstander;
 	[SerializeField] Animator transitionAnimator;
@@ -18,10 +18,11 @@ public class VersierController : MonoBehaviour {
 	bool tekstComplete = false;
 	bool sliderComplete = false;
 	int isEffective = 0;
+	CharInfo enemy;
 
 	void Awake() {
-		tegenstander.SetNaam(InfoHolder.GetTegenstanderNaam());
-		tegenstander.GetComponent<SpriteRenderer>().sprite = InfoHolder.GetTegenstanderSprite();
+		player.SetCharInfo(InfoHolder.GetPlayerInfo());
+		tegenstander.SetCharInfo(InfoHolder.GetEnemyInfo());
 	}
 
 	void Start() {
@@ -112,7 +113,7 @@ public class VersierController : MonoBehaviour {
 		else if (selection.Equals("GEZA")) {
 			ChangePlayerAction();
 		}
-		else if (selection.Equals("JAGER")) {
+		else if (selection.Equals("FAIL")) {
 
 		}
 		else {

@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour {
 
 	[SerializeField] Text[] menuOptions;
 	[SerializeField] Image arrow;
-	[SerializeField] bool leftRightOptions;
+	[SerializeField] bool leftRightOptions = false;
 	int menuIndex = 0;
 	int menuSize;
 

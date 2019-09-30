@@ -9,19 +9,18 @@ public class CameraControl : MonoBehaviour {
 	public float upBorder = 3;
 	public float downBorder = 0;
 	
-	// Update is called once per frame
+	void Awake() {
+		Move();
+	}
+
 	void Update () {
 		Move();
 	}
 
 	void Move() {
 		Vector3 camPosition = transform.position;
-		if (playerTransform.position.x > leftBorder && playerTransform.position.x < rightBorder) {
-			camPosition.x = playerTransform.position.x;
-		}
-		if (playerTransform.position.y > downBorder && playerTransform.position.y < upBorder) {
-			camPosition.y = playerTransform.position.y;
-		}
+		camPosition.x = Mathf.Min(Mathf.Max(playerTransform.position.x, leftBorder), rightBorder);
+		camPosition.y = Mathf.Min(Mathf.Max(playerTransform.position.y, downBorder), upBorder);
 		transform.position = camPosition;
 	}
 

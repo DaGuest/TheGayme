@@ -129,6 +129,10 @@ public class Player : MonoBehaviour {
 		return sgraalheid;
 	}
 
+	public void SetMoveable(bool value) {
+		canMove = value;
+	}
+
 	public void setSgraalheid(float valueToAdd) {
 		sgraalheid = (int)Mathf.Clamp(sgraalheid + valueToAdd, 0, 100);
 		if (OnSgraalheid != null) {
