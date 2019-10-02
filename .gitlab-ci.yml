@@ -59,7 +59,7 @@ build-WebGL:
   <<: *build
   variables:
     BUILD_TARGET: WebGL
-      BuildOptions: StrictMode
+    BuildOptions: StrictMode
     
 pages:
   image: alpine:latest
