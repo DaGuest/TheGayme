@@ -44,13 +44,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.Return)) {
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			if (poepAble) {
 				poepenUit();
 			}
 			setSgraalheid(-5);
 		}
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown(KeyCode.Return)) {
 			if (poepAble) {
 				poepenAan();
 			}
@@ -127,6 +127,10 @@ public class Player : MonoBehaviour {
 
 	public int getSgraalheid() {
 		return sgraalheid;
+	}
+
+	public void SetMoveable(bool value) {
+		canMove = value;
 	}
 
 	public void setSgraalheid(float valueToAdd) {

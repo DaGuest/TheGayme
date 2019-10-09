@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class HealthBar : UIMover {
 	public delegate void OnSliderComplete();
 	public event OnSliderComplete onSliderComplete;
-	[SerializeField] Image barImage;
-	[SerializeField] Text naamTekst;
+	[SerializeField] Image barImage = null;
+	[SerializeField] Text naamTekst = null;
 
 	Slider healthSlider;
-	string naam = "GEZA";
 
 	void Awake() {
 		healthSlider = gameObject.GetComponentInChildren<Slider>();
@@ -21,7 +20,7 @@ public class HealthBar : UIMover {
 	}
 
 	IEnumerator SlideHealth(float value) {
-		while(healthSlider.value > value) {
+		while(healthSlider.value > value && healthSlider.value > 0) {
 			healthSlider.value -= 0.01f; 
 			ChangeSliderColor();
 			yield return new WaitForSeconds(0.01f);
