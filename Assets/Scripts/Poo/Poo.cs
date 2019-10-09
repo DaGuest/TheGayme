@@ -14,31 +14,53 @@ public class Poo : MonoBehaviour {
 	float vDistanceTravelled = 0;
 	float spawnRate = 25;
 
-	public bool touchingTopWall = false;
-
+	Animator animator;
 	Transform cam;
+	bool canMove = true;
 
 	void Start () {
-		cam = GameObject.Find ("Main Camera").GetComponent<Transform> ();
+		animator = gameObject.GetComponent<Animator>();
+		cam = GameObject.Find ("Main Camera").GetComponent<Transform>();
 	}
 	
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Return)){
 			lvlSpeed += 1;
 		}
-
-		Move ();
-
-		Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-		transform.position += move * moveSpeed * Time.deltaTime;
-
+		Move();
+		ChangeSize();
 		SpawnObstacles ();
 	}
 
 	void Move(){
-		transform.position = transform.position + Vector3.down * lvlSpeed * Time.deltaTime;
-		cam.position = cam.position + Vector3.down * lvlSpeed * Time.deltaTime;
-		vDistanceTravelled += lvlSpeed * Time.deltaTime;
+		if (canMove) {
+			Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+			transform.position += move * moveSpeed * Time.deltaTime;
+			transform.position = transform.position + Vector3.down * lvlSpeed * Time.deltaTime;
+			cam.position = cam.position + Vector3.down * lvlSpeed * Time.deltaTime;
+			vDistanceTravelled += lvlSpeed * Time.deltaTime;
+		}
+	}
+
+	void ChangeSize() {
+		if (size < 5) {
+			animator.SetTrigger("klein");
+		}
+		else if (size < 10) {
+			animator.SetTrigger("middel");
+		}
+		else {
+			animator.SetTrigger("groot");
+		}
+	}
+
+	void GameOver() {
+		Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+		rb.gravityScale = 3;
+		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+		sr.sortingOrder = 2;
+		BoxCollider2D bc = gameObject.GetComponent<BoxCollider2D>();
+		bc.isTrigger = true;
 	}
 
 	void SpawnObstacles(){
@@ -71,18 +93,8 @@ public class Poo : MonoBehaviour {
 		}
 
 		if (col.tag == "TopWall") {
-			touchingTopWall = true;
-		}
-
-		if (col.tag == "Wall") {
-			if (touchingTopWall == true)
-				Debug.Log ("Dead");
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D col){
-		if (col.tag == "TopWall") {
-			touchingTopWall = false;
+			canMove = false;
+			GameOver();
 		}
 	}
 }
