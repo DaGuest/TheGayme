@@ -11,38 +11,29 @@ public class PlayerObject : MonoBehaviour {
 	Animator playerAnimator;
 	int health = 10;
 	int maxHealth = 10;
-	List<Action> actions = new List<Action>();
 	
-	[SerializeField] string naam = "PlayerObject";
-	[SerializeField] string[] attackNamen;
-	[SerializeField] int[] attackDamage;
-	[SerializeField] List<string> weaknessToAttacks;
-	[SerializeField] List<string> strengthToAttacks;
+	CharInfo charInfo;
 
 	void Awake() {
 		playerAnimator = gameObject.GetComponent<Animator>();
-		MakeActions();
 	}
 
 	void Start() {
 		playerAnimator.SetTrigger("moveIntoView");
 	}
 
-	void MakeActions() {
-		for (int i = 0; i < attackNamen.Length; i++) {
-			actions.Add(new Action(attackNamen[i], attackDamage[i]));
-		}	
+	public void SetCharInfo(CharInfo charInfo) {
+		this.charInfo = charInfo;
+		gameObject.GetComponent<SpriteRenderer>().sprite = charInfo.GetSprite();
+		health = maxHealth = charInfo.GetHealth();
 	}
 
 	public string GetNaam() {
-		return naam;
-	}
-
-	public void SetNaam(string naam) {
-		this.naam = naam;
+		return charInfo.GetNaam();
 	}
 
 	public Action GetAction(string actionNaam) {
+		List<Action> actions = charInfo.GetActions();
 		foreach (Action action in actions) {
 			string tempActionNaam = action.GetNaam();
 			if (tempActionNaam.Equals(actionNaam)) {
@@ -53,24 +44,12 @@ public class PlayerObject : MonoBehaviour {
 	}
 
 	public Action GetRandomAction() {
+		List<Action> actions = charInfo.GetActions();
 		return actions[Random.Range(0, actions.Count)];
 	}
 
-	public void ReceiveAction(Action action) {
-		int damage = action.GetDamage();
-		if (weaknessToAttacks.Contains(action.GetNaam())) {
-			damage *= 2;
-			onEffective(1);
-		}
-		else if (strengthToAttacks.Contains(action.GetNaam())) {
-			damage /= 2;
-			onEffective(-1);
-		}
-		health -= damage;
-		onHealthChange(health / (float)maxHealth);
-	}
-
 	public string[] GetActionNamen() {
+		List<Action> actions = charInfo.GetActions();
 		string[] toReturn = {"-", "-", "-", "-"};
 		for (int i = 0; i < 4; i++) {
 			toReturn[i] = actions[i].GetNaam();
@@ -80,6 +59,20 @@ public class PlayerObject : MonoBehaviour {
 
 	public float GetHealth() {
 		return health;
+	}
+
+	public void ReceiveAction(Action action) {
+		int damage = action.GetDamage();
+		if (charInfo.GetWeakness().Equals(action.GetNaam())) {
+			damage *= 2;
+			onEffective(1);
+		}
+		else if (charInfo.GetStrength().Equals(action.GetNaam())) {
+			damage /= 2;
+			onEffective(-1);
+		}
+		health -= damage;
+		onHealthChange(health / (float)maxHealth);
 	}
 
 	public void PerformAction(string actionNaam) {
