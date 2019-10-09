@@ -7,11 +7,11 @@ public class Menu : MonoBehaviour {
 	public delegate void OnAction(string selected);
 	public event OnAction onAction;
 
-	[SerializeField] Text[] menuOptions;
-	[SerializeField] Image arrow;
+	[SerializeField] Text[] menuOptions = null;
+	[SerializeField] Image arrow = null;
 	[SerializeField] bool leftRightOptions = false;
 	int menuIndex = 0;
-	int menuSize;
+	int menuSize = 0;
 
 	void Start() {
 		menuSize = menuOptions.Length;

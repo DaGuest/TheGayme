@@ -7,10 +7,10 @@ public class CharInfo : MonoBehaviour {
     [SerializeField] int health  = 10;
     [SerializeField] Sprite sprite = null;
     List<Action> actions = new List<Action>();
-    [SerializeField] string[] actionNamen;
-    [SerializeField] int[] actionDamage;
-    [SerializeField] string weakness;
-    [SerializeField] string strength;
+    [SerializeField] string[] actionNamen = null;
+    [SerializeField] int[] actionDamage = null;
+    [SerializeField] string weakness = null;
+    [SerializeField] string strength = null;
 
     void Awake() {
         this.naam = gameObject.name;

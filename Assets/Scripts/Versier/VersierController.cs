@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class VersierController : MonoBehaviour {
-	[SerializeField] HealthBar playerHealthBar;
-	[SerializeField] HealthBar tegenstanderHealthBar;
-	[SerializeField] Window windowGroot;
+	[SerializeField] HealthBar playerHealthBar = null;
+	[SerializeField] HealthBar tegenstanderHealthBar = null;
+	[SerializeField] Window windowGroot = null;
 	[SerializeField] Menu mainMenu = null;
 	[SerializeField] Menu flirtMenu = null;
 	[SerializeField] Menu itemMenu = null;
-	[SerializeField] PlayerObject player;
-	[SerializeField] PlayerObject tegenstander;
-	[SerializeField] Animator transitionAnimator;
+	[SerializeField] PlayerObject player = null;
+	[SerializeField] PlayerObject tegenstander = null;
+	[SerializeField] Animator transitionAnimator = null;
 
 	bool isPlayerTurn = true;  //true = player, false = tegenstander 
 	bool tekstComplete = false;

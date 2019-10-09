@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class HealthBar : UIMover {
 	public delegate void OnSliderComplete();
 	public event OnSliderComplete onSliderComplete;
-	[SerializeField] Image barImage;
-	[SerializeField] Text naamTekst;
+	[SerializeField] Image barImage = null;
+	[SerializeField] Text naamTekst = null;
 
 	Slider healthSlider;
 
