@@ -3,58 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Poo : MonoBehaviour {
-
 	public float lvlSpeed;
-	public float moveSpeed;
-	public int size = 0;
 
 	public List<GameObject> obstacles;
 	public Transform[] positions;
+	public PooPlayer player;
+	public CameraControls camControls;
 
 	float vDistanceTravelled = 0;
 	float spawnRate = 25;
-
-	Animator animator;
-	Transform cam;
-	bool canMove = true;
-
-	void Start () {
-		animator = gameObject.GetComponent<Animator>();
-		cam = GameObject.Find ("Main Camera").GetComponent<Transform>();
-	}
 	
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Return)){
 			lvlSpeed += 1;
 		}
-		Move();
-		ChangeSize();
-		SpawnObstacles ();
-	}
-
-	void Move(){
-		if (canMove) {
-			Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-			transform.position += move * moveSpeed * Time.deltaTime;
-			transform.position = transform.position + Vector3.down * lvlSpeed * Time.deltaTime;
-			cam.position = cam.position + Vector3.down * lvlSpeed * Time.deltaTime;
-			vDistanceTravelled += lvlSpeed * Time.deltaTime;
+		if (camControls.GetY() < -220) {
+			lvlSpeed = 0;
 		}
-	}
-
-	void ChangeSize() {
-		if (size < 5) {
-			animator.SetTrigger("klein");
-		}
-		else if (size < 10) {
-			animator.SetTrigger("middel");
-		}
-		else {
-			animator.SetTrigger("groot");
-		}
+		SpawnObstacles();
+		camControls.Move(lvlSpeed);
+		player.Move(lvlSpeed);
+		vDistanceTravelled += lvlSpeed * Time.deltaTime;
 	}
 
 	void GameOver() {
+		lvlSpeed = 0;
 		Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
 		rb.gravityScale = 3;
 		SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
@@ -80,21 +53,4 @@ public class Poo : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag == "Gas") {
-			lvlSpeed += .75f;
-			GameObject.Destroy (col.gameObject);
-		}
-
-		if (col.tag == "Poo") {
-			lvlSpeed -= .5f;
-			size++;
-			GameObject.Destroy (col.gameObject);
-		}
-
-		if (col.tag == "TopWall") {
-			canMove = false;
-			GameOver();
-		}
-	}
 }
