@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Poo : MonoBehaviour {
 	public float lvlSpeed;
@@ -34,6 +35,7 @@ public class Poo : MonoBehaviour {
 		sr.sortingOrder = 2;
 		BoxCollider2D bc = gameObject.GetComponent<BoxCollider2D>();
 		bc.isTrigger = true;
+		SceneManager.LoadScene(InfoHolder.GetLastScene());
 	}
 
 	void SpawnObstacles(){

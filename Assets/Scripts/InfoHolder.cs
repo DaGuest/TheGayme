@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class InfoHolder {
-	static CharInfo player;
-	static CharInfo tegenstander;
+	static CharInfo playerCharInfo;
+	static CharInfo tegenstanderCharInfo;
 	static Vector3 mapPosition;
 	static Vector3 barPosition;
+	static int poeplevel = 50;
+	static int geillevel = 50;
+	static string lastScene = "";
 
 	public static void SetPlayerInfo(CharInfo playerInfo) {
-		player = playerInfo;
+		playerCharInfo = playerInfo;
 	} 
 
 	public static CharInfo GetPlayerInfo() {
-		return player;
+		return playerCharInfo;
 	}
 	
 	public static void SetEnemyInfo(CharInfo enemy) {
-		tegenstander = enemy;
+		tegenstanderCharInfo = enemy;
 	} 
 
 	public static CharInfo GetEnemyInfo() {
-		return tegenstander;
+		return tegenstanderCharInfo;
 	}
 
 	public static void SetMapPosition(Vector3 pos) {
@@ -38,5 +41,29 @@ public static class InfoHolder {
 
 	public static Vector3 GetBarPosition() {
 		return barPosition;
+	}
+
+	public static void SetPoepLevel(int value) {
+		poeplevel = value;
+	}
+
+	public static int GetPoepLevel() {
+		return poeplevel;
+	}
+
+	public static void SetGeilLevel(int value) {
+		geillevel = value;
+	}
+
+	public static int GetGeilLevel() {
+		return geillevel;
+	}
+
+	public static string GetLastScene() {
+		return lastScene;
+	}
+
+	public static void SetLastScene(string sceneName) {
+		lastScene = sceneName;
 	}
 }

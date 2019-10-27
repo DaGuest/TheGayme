@@ -61,6 +61,10 @@ public class PlayerObject : MonoBehaviour {
 		return health;
 	}
 
+	public int GetFlirtReward() {
+		return charInfo.GetFlirtReward();
+	}
+
 	public void ReceiveAction(Action action) {
 		int damage = action.GetDamage();
 		if (charInfo.GetWeakness().Equals(action.GetNaam())) {

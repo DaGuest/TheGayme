@@ -4,37 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BarController : MonoBehaviour {
+public class HuisController : MonoBehaviour
+{
     Vector3 poepZoom;
-    public Animator battleAnimator;
     public Player player;
     public Text spacebarText;
-    public Slider poepSlider;
-    public Slider geilSlider;
 
-    void Awake() {
-        Transform playerTransform = player.GetComponent<Transform>();
-        Vector3 startPosition = InfoHolder.GetBarPosition();
-        if (startPosition != Vector3.zero) {
-            playerTransform.position = startPosition;
-        }
-    }
-	
     void Start() {
-        poepSlider.value = InfoHolder.GetPoepLevel();
-        geilSlider.value = InfoHolder.GetGeilLevel();
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
-        InfoHolder.SetPlayerInfo(player.GetComponent<CharInfo>());
         SubScribeToBehaviours();
     }
 
     void FixedUpdate() {
         player.Move();
-        //player.SetLayer();
+        player.SetLayer();
     }
 
     void SubScribeToBehaviours() {
-        player.onBattle += StartBattle;
         player.onBattleReady += BattleReady;
         player.onPoepen += StartPoepen;
     }
@@ -52,18 +38,6 @@ public class BarController : MonoBehaviour {
         spacebarText.text = text;
         spacebarText.color = color;
         spacebarText.fontSize = size;
-    }
-
-    void StartBattle() {
-        InfoHolder.SetBarPosition(player.GetComponent<Transform>().position);
-        StartCoroutine(IStartBattle());
-    }
-
-    IEnumerator IStartBattle() {
-        battleAnimator.SetTrigger("battle");
-        yield return new WaitForSeconds(3.5f);
-        InfoHolder.SetLastScene(SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene("Versier");
     }
 
     void StartPoepen() {

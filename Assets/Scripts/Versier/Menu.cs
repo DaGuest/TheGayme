@@ -24,7 +24,7 @@ public class Menu : MonoBehaviour {
 			if (leftRightOptions) {
 				LeftRightControls();
 			}
-			if (Input.GetKeyDown(KeyCode.Return)) {
+			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
 				onAction(menuOptions[menuIndex].text);
 			}
 			if (Input.GetKeyDown(KeyCode.Escape)) {

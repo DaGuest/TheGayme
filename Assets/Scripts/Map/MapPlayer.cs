@@ -24,7 +24,7 @@ public class MapPlayer : MonoBehaviour {
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && currentPosition.left != null) {
                 StartCoroutine(MoveToPosition(currentPosition.left.position));
             }
-            else if (Input.GetKeyDown(KeyCode.Return) && currentPosition.sceneToLoad != null) {
+            else if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) && currentPosition.sceneToLoad != null) {
                 exitTo.sceneToLoad = currentPosition.sceneToLoad;
                 InfoHolder.SetMapPosition(transform.position);
                 StartCoroutine(exitTo.FadeOut());

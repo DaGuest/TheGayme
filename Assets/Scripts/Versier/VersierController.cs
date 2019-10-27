@@ -170,6 +170,9 @@ public class VersierController : MonoBehaviour {
 	}
 
 	void PlayerDead(PlayerObject playerToDie) {
+		if (!playerToDie.tag.Equals("Player")) {
+			InfoHolder.SetGeilLevel(InfoHolder.GetGeilLevel() - playerToDie.GetFlirtReward());
+		}
 		playerToDie.DeathAnimation();
 		windowGroot.ShowTekst(playerToDie.GetNaam() + " fainted!");
 		StartCoroutine(EndGame());

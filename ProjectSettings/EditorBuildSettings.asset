@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GOG.unity
     guid: 303d94d74c96fe844af92121caa43be5
+  - enabled: 1
+    path: Assets/Scenes/Poepen.unity
+    guid: 73ffa7680290c4073b71f5de44c1410a
   m_configObjects: {}

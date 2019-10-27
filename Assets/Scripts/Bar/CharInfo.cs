@@ -11,6 +11,7 @@ public class CharInfo : MonoBehaviour {
     [SerializeField] int[] actionDamage = null;
     [SerializeField] string weakness = null;
     [SerializeField] string strength = null;
+    [SerializeField] int flirtReward = 10;
 
     void Awake() {
         this.naam = gameObject.name;
@@ -49,5 +50,9 @@ public class CharInfo : MonoBehaviour {
 
     public string GetStrength() {
         return strength;
+    }
+
+    public int GetFlirtReward() {
+        return flirtReward;
     }
 }
