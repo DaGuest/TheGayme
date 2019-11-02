@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef5d788b409e9845855741bd1fb074f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 6
   health: 10
   sprite: {fileID: 0}
   actionNamen:
@@ -162,6 +163,8 @@ MonoBehaviour:
   weakness: WINK
   strength: SHOW PENIS
   flirtReward: 10
+  actionRewardNaam: SHOW PENIS
+  actionRewardDamage: 8
 --- !u!95 &64499181
 Animator:
   serializedVersion: 3
@@ -1277,6 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef5d788b409e9845855741bd1fb074f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 8
   health: 20
   sprite: {fileID: 0}
   actionNamen:
@@ -1287,6 +1291,8 @@ MonoBehaviour:
   weakness: SHOW PENIS
   strength: TALK
   flirtReward: 10
+  actionRewardNaam: 
+  actionRewardDamage: 0
 --- !u!1 &700181222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef5d788b409e9845855741bd1fb074f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 10
   health: 50
   sprite: {fileID: 0}
   actionNamen:
@@ -2168,6 +2175,8 @@ MonoBehaviour:
   weakness: WINK
   strength: CARD TRICK
   flirtReward: 10
+  actionRewardNaam: 
+  actionRewardDamage: 0
 --- !u!1 &1033974177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,10 +2879,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1979362656935746, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1979362656935746, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
       propertyPath: m_Name
       value: GAYZA
       objectReference: {fileID: 0}
@@ -2909,25 +2914,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 212065284202497470, guid: 10e51d0c71682fe44979f80256d80fce,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
+    - target: {fileID: 4440392153485950, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61720991112254152, guid: 10e51d0c71682fe44979f80256d80fce,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.04934174
+    - target: {fileID: 4440392153485950, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61720991112254152, guid: 10e51d0c71682fe44979f80256d80fce,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.59792787
-      objectReference: {fileID: 0}
-    - target: {fileID: 61720991112254152, guid: 10e51d0c71682fe44979f80256d80fce,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.5041443
+    - target: {fileID: 4440392153485950, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10e51d0c71682fe44979f80256d80fce, type: 3}
@@ -3653,36 +3650,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d154a562e61df69488a71ddeab8d44d1, type: 2}
---- !u!1 &1664962585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1979362656935746, guid: 10e51d0c71682fe44979f80256d80fce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1253375129}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1664962590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664962585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ef5d788b409e9845855741bd1fb074f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  sprite: {fileID: 21300000, guid: 58c88e58abb86f64ba29b6e2ff288a30, type: 3}
-  actionNamen:
-  - TALK
-  - CARD TRICK
-  - SHOW PENIS
-  - WINK
-  - JAGER SHOT
-  actionDamage: 0200000005000000070000000400000003000000
-  weakness: PUPPY EYES
-  strength: TALK
-  flirtReward: 10
 --- !u!1 &1704630336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,15 +4061,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef5d788b409e9845855741bd1fb074f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 5
   health: 5
   sprite: {fileID: 0}
   actionNamen:
   - TALK
-  - CARD TRICK
+  - WINK
   actionDamage: 0300000005000000
   weakness: TALK
   strength: 
   flirtReward: 10
+  actionRewardNaam: WINK
+  actionRewardDamage: 5
 --- !u!114 &1807016803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4641,7 +4611,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1253375129}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664962585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b262bb9e0aef3340b037f378a595fc8, type: 3}

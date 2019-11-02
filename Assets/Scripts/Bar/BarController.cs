@@ -24,13 +24,15 @@ public class BarController : MonoBehaviour {
         poepSlider.value = InfoHolder.GetPoepLevel();
         geilSlider.value = InfoHolder.GetGeilLevel();
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
-        InfoHolder.SetPlayerInfo(player.GetComponent<CharInfo>());
+        if (!InfoHolder.playerInfoLoaded) {
+            InfoHolder.SetPlayerInfo(player.GetComponent<CharInfo>());
+            InfoHolder.playerInfoLoaded = true;
+        }
         SubScribeToBehaviours();
     }
 
     void FixedUpdate() {
         player.Move();
-        //player.SetLayer();
     }
 
     void SubScribeToBehaviours() {

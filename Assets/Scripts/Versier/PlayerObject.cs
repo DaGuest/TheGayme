@@ -28,8 +28,20 @@ public class PlayerObject : MonoBehaviour {
 		health = maxHealth = charInfo.GetHealth();
 	}
 
+	public bool LearnAction(KeyValuePair<string, int> action) {
+		bool learned = charInfo.AddAction(action);
+		if (learned) {
+			InfoHolder.SetPlayerInfo(charInfo);
+		}
+		return learned;
+	}
+
 	public string GetNaam() {
 		return charInfo.GetNaam();
+	}
+
+	public int GetLevel() {
+		return charInfo.GetLevel();
 	}
 
 	public Action GetAction(string actionNaam) {
@@ -63,6 +75,10 @@ public class PlayerObject : MonoBehaviour {
 
 	public int GetFlirtReward() {
 		return charInfo.GetFlirtReward();
+	}
+
+	public KeyValuePair<string, int> GetFlirtActionReward() {
+		return charInfo.GetActionReward();
 	}
 
 	public void ReceiveAction(Action action) {

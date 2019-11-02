@@ -18,11 +18,12 @@ public class VersierController : MonoBehaviour {
 	bool tekstComplete = false;
 	bool sliderComplete = false;
 	int isEffective = 0;
-	CharInfo enemy;
 
 	void Awake() {
 		player.SetCharInfo(InfoHolder.GetPlayerInfo());
 		tegenstander.SetCharInfo(InfoHolder.GetEnemyInfo());
+		tegenstanderHealthBar.SetLevel(tegenstander.GetLevel());
+		playerHealthBar.SetLevel(player.GetLevel());
 	}
 
 	void Start() {
@@ -71,7 +72,7 @@ public class VersierController : MonoBehaviour {
 		isPlayerTurn = !isPlayerTurn;
 		if (player.GetHealth() <= 0 || tegenstander.GetHealth() <= 0) {
 			PlayerObject playerToDie = (player.GetHealth() <= 0) ? player : tegenstander;
-			PlayerDead(playerToDie);
+			StartCoroutine(PlayerDead(playerToDie));
 		}
 		else if (isPlayerTurn) {
 			mainMenu.Show(true);
@@ -169,12 +170,18 @@ public class VersierController : MonoBehaviour {
 		}
 	}
 
-	void PlayerDead(PlayerObject playerToDie) {
+	IEnumerator PlayerDead(PlayerObject playerToDie) {
+		playerToDie.DeathAnimation();
+		windowGroot.QueueMessage(playerToDie.GetNaam() + " fainted!");
 		if (!playerToDie.tag.Equals("Player")) {
 			InfoHolder.SetGeilLevel(InfoHolder.GetGeilLevel() - playerToDie.GetFlirtReward());
+			if (player.LearnAction(playerToDie.GetFlirtActionReward())) {
+				windowGroot.QueueMessage(player.GetNaam() + " learned " + playerToDie.GetFlirtActionReward().Key);
+			}
 		}
-		playerToDie.DeathAnimation();
-		windowGroot.ShowTekst(playerToDie.GetNaam() + " fainted!");
+		windowGroot.ShowQueuedTekst();
+		yield return new WaitUntil(() => tekstComplete);
+		tekstComplete = false;
 		StartCoroutine(EndGame());
 	}
 
@@ -199,7 +206,6 @@ public class VersierController : MonoBehaviour {
 	}
 
 	IEnumerator EndGame() {
-		yield return new WaitForSeconds(1.0f);
 		transitionAnimator.SetTrigger("end");
 		yield return new WaitForSeconds(1.5f);
 		SceneManager.LoadScene("Bar");

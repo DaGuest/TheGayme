@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class InfoHolder {
 	static CharInfo playerCharInfo;
+	public static bool playerInfoLoaded = false;
 	static CharInfo tegenstanderCharInfo;
 	static Vector3 mapPosition;
 	static Vector3 barPosition;

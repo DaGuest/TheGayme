@@ -25,7 +25,7 @@ public class Window : MonoBehaviour {
 			StartCoroutine(ScrollTekst());
 			yield return new WaitUntil(() => scrollComplete);
 			scrollComplete = false;
-			yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+			yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space));
 			yield return new WaitForFixedUpdate();
 		}
 		if (onTekstComplete != null) {

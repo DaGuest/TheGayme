@@ -8,6 +8,7 @@ public class HealthBar : UIMover {
 	public event OnSliderComplete onSliderComplete;
 	[SerializeField] Image barImage = null;
 	[SerializeField] Text naamTekst = null;
+	[SerializeField] Text levelTekst = null;
 
 	Slider healthSlider;
 
@@ -45,4 +46,8 @@ public class HealthBar : UIMover {
 	public void SetNaam(string naam) {
 		naamTekst.text = naam;
 	}
-}
+
+	public void SetLevel(int level) {
+		levelTekst.text = "" + level;
+	}
+ }
