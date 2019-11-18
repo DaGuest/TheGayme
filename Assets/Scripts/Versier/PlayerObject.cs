@@ -31,6 +31,7 @@ public class PlayerObject : MonoBehaviour {
 	public bool LearnAction(KeyValuePair<string, int> action) {
 		bool learned = charInfo.AddAction(action);
 		if (learned) {
+			charInfo.AddHealth(charInfo.GetFlirtReward());
 			InfoHolder.SetPlayerInfo(charInfo);
 		}
 		return learned;
@@ -101,5 +102,10 @@ public class PlayerObject : MonoBehaviour {
 
 	public void DeathAnimation() {
 		playerAnimator.SetTrigger("death");
+	}
+
+	public void Die() {
+		charInfo.isFlirtable = false;
+		InfoHolder.SetEnemyInfo(charInfo);
 	}
 }

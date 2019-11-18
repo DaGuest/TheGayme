@@ -15,18 +15,16 @@ public class BarController : MonoBehaviour {
     void Awake() {
         Transform playerTransform = player.GetComponent<Transform>();
         Vector3 startPosition = InfoHolder.GetBarPosition();
-        if (startPosition != Vector3.zero) {
+        if (!InfoHolder.GetLastScene().Equals("Map") && startPosition != Vector3.zero ) {
             playerTransform.position = startPosition;
         }
     }
 	
     void Start() {
         poepSlider.value = InfoHolder.GetPoepLevel();
-        geilSlider.value = InfoHolder.GetGeilLevel();
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
         if (!InfoHolder.playerInfoLoaded) {
             InfoHolder.SetPlayerInfo(player.GetComponent<CharInfo>());
-            InfoHolder.playerInfoLoaded = true;
         }
         SubScribeToBehaviours();
     }

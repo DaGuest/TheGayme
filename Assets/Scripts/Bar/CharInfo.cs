@@ -15,7 +15,8 @@ public class CharInfo : MonoBehaviour {
     [SerializeField] int flirtReward = 10;
     [SerializeField] string actionRewardNaam = null;
     [SerializeField] int actionRewardDamage = 0;
-
+    public bool isFlirtable = true;
+    
     void Awake() {
         this.naam = gameObject.name;
         if (this.sprite == null) {
@@ -32,6 +33,10 @@ public class CharInfo : MonoBehaviour {
         }
     }
 
+    void AddExtraAction() {
+
+    }
+
     public string GetNaam() {
         return naam;
     }
@@ -42,6 +47,10 @@ public class CharInfo : MonoBehaviour {
 
     public int GetHealth() {
         return health;
+    }
+
+    public void AddHealth(int value) {
+        health += value;
     }
 
     public Sprite GetSprite() {

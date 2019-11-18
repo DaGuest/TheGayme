@@ -18,6 +18,7 @@ public class ExitTo : MonoBehaviour {
     public IEnumerator FadeOut() {
         anim.SetTrigger("fadeout");
         yield return new WaitForSeconds(1f);
+        InfoHolder.SetLastScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(sceneToLoad);
     }
 }

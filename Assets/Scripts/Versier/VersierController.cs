@@ -178,6 +178,7 @@ public class VersierController : MonoBehaviour {
 			if (player.LearnAction(playerToDie.GetFlirtActionReward())) {
 				windowGroot.QueueMessage(player.GetNaam() + " learned " + playerToDie.GetFlirtActionReward().Key);
 			}
+			tegenstander.Die();			
 		}
 		windowGroot.ShowQueuedTekst();
 		yield return new WaitUntil(() => tekstComplete);

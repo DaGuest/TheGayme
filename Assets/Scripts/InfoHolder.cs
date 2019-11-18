@@ -14,6 +14,7 @@ public static class InfoHolder {
 
 	public static void SetPlayerInfo(CharInfo playerInfo) {
 		playerCharInfo = playerInfo;
+		playerInfoLoaded = true;
 	} 
 
 	public static CharInfo GetPlayerInfo() {
