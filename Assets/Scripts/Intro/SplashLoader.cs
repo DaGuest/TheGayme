@@ -5,16 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class SplashLoader : MonoBehaviour
 {
-    public int timeToShow = 5;
     private ExitTo fader;
+    public int timeToShow = 5;
+    public bool lastSlide = false;
 
     void Awake() {
         fader = gameObject.GetComponent<ExitTo>();
     }
 
     void Start() {
-        StartCoroutine(ToSplash());
+        if (!lastSlide) {
+            StartCoroutine(ToSplash());
+        }
     }
+
+    void Update() {
+        if (lastSlide) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                StartCoroutine(fader.FadeOut());
+            }
+        }
+    }
+
 
     IEnumerator ToSplash() {
         yield return new WaitForSeconds(timeToShow);

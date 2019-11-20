@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 548200857574465618
     second: penis_anim_8
+  - first:
+      213: -7832950900521249425
+    second: penis_anim_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -161,7 +164,7 @@ TextureImporter:
       name: penis_anim_1
       rect:
         serializedVersion: 2
-        x: 314
+        x: 308
         y: 17
         width: 193
         height: 247
@@ -321,6 +324,27 @@ TextureImporter:
       bones: []
       spriteID: 6395edda9f97bb64384f9cd16f258abe
       internalID: 548200857574465618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: penis_anim_9
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 17
+        width: 193
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6760892b789f44b8a4cf4cfcabe044
+      internalID: -7832950900521249425
       vertices: []
       indices: 
       edges: []
