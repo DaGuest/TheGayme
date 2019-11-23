@@ -9,10 +9,8 @@ public class HuisController : MonoBehaviour
     Vector3 poepZoom;
     public Player player;
     public Text spacebarText;
-    public Slider poepSlider;
 
     void Start() {
-        poepSlider.value = InfoHolder.GetPoepLevel();
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
         SubScribeToBehaviours();
     }

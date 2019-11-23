@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Poepen.unity
     guid: 73ffa7680290c4073b71f5de44c1410a
+  - enabled: 1
+    path: Assets/Scenes/Intro/GameOver.unity
+    guid: e04e2e76c052f5d4584c47904ccfd2e9
   m_configObjects: {}

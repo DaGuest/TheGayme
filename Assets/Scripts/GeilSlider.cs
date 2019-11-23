@@ -9,32 +9,35 @@ public class GeilSlider : MonoBehaviour
     [SerializeField] Sprite[] penisStates;
     Image penisImage;
     bool throbbing = false;
+    MasterController masterController;
     
     void Awake() {
+        masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
         penisImage = gameObject.GetComponent<Image>();
-        geilWaarde = InfoHolder.GetGeilLevel();
+        geilWaarde = masterController.geilWaarde;
         ChangeState();
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            geilWaarde+=10;
-            ChangeState();
-        }   
-        else if (Input.GetKeyDown(KeyCode.S)) {
-            geilWaarde-=10;
-            ChangeState();
-        } 
+    void Start() {
+        SubscribeToBehaviours();
+    }
+
+    void SubscribeToBehaviours() {
+        masterController.onWaardeChanged += ChangeGeilWaarde;
+    }
+
+    void UnSubscribeFromBehaviours() {
+        masterController.onWaardeChanged -= ChangeGeilWaarde;
     }
 
     void ChangeState() {
         int stateIndex = ((penisStates.Length * geilWaarde) / 100);
-        if (stateIndex > 8) {
+        if (stateIndex == penisStates.Length - 2) {
             throbbing = true;
             StopAllCoroutines();
             StartCoroutine(Throb());
         }
-        else {
+        else if (stateIndex < penisStates.Length - 2) {
             throbbing = false;
             StopAllCoroutines();
             penisImage.sprite = penisStates[stateIndex];
@@ -43,15 +46,21 @@ public class GeilSlider : MonoBehaviour
 
     IEnumerator Throb() {
         while (throbbing) {
-            penisImage.sprite = penisStates[9];
+            penisImage.sprite = penisStates[penisStates.Length - 1];
             yield return new WaitForSeconds(0.5f);
-            penisImage.sprite = penisStates[8];
+            penisImage.sprite = penisStates[penisStates.Length - 2];
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    public void ChangeGeilWaarde(int value) {
-        geilWaarde = value;
-        ChangeState();
+    public void ChangeGeilWaarde(int value, string waardeNaam) {
+        if (waardeNaam.Equals("geil")) {
+            geilWaarde = value;
+            ChangeState();
+        }
+    }
+
+    void OnDestroy() {
+        UnSubscribeFromBehaviours();
     }
 }

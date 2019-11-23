@@ -9,8 +9,7 @@ public class BarController : MonoBehaviour {
     public Animator battleAnimator;
     public Player player;
     public Text spacebarText;
-    public Slider poepSlider;
-    public Slider geilSlider;
+    private MasterController masterController;
 
     void Awake() {
         Transform playerTransform = player.GetComponent<Transform>();
@@ -18,22 +17,22 @@ public class BarController : MonoBehaviour {
         if (!InfoHolder.GetLastScene().Equals("Map") && startPosition != Vector3.zero ) {
             playerTransform.position = startPosition;
         }
+        masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
     }
 	
     void Start() {
-        poepSlider.value = InfoHolder.GetPoepLevel();
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
         if (!InfoHolder.playerInfoLoaded) {
             InfoHolder.SetPlayerInfo(player.GetComponent<CharInfo>());
         }
-        SubScribeToBehaviours();
+        SubscribeToBehaviours();
     }
 
     void FixedUpdate() {
         player.Move();
     }
 
-    void SubScribeToBehaviours() {
+    void SubscribeToBehaviours() {
         player.onBattle += StartBattle;
         player.onBattleReady += BattleReady;
         player.onPoepen += StartPoepen;
