@@ -2,7 +2,7 @@
 
 set -x
 
-echo "Testng for $TEST_PLATFORM"
+echo "Testing for $TEST_PLATFORM"
 
 ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' /opt/Unity/Editor/Unity} \
   -projectPath $(pwd) \
@@ -25,4 +25,4 @@ else
 fi
 
 cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
-exit $UNITY_TEST_EXIT_CODE
+exit $UNITY_EXIT_CODE
