@@ -8,6 +8,7 @@ public class HuisController : MonoBehaviour
 {
     Vector3 poepZoom;
     public Player player;
+    public TrapLayers trap;
     public Text spacebarText;
 
     void Start() {
@@ -17,7 +18,7 @@ public class HuisController : MonoBehaviour
 
     void FixedUpdate() {
         player.Move();
-        player.SetLayer();
+        trap.SetLayer(player.transform.position.y);
     }
 
     void SubScribeToBehaviours() {

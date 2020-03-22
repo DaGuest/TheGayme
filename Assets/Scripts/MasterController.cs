@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
-using UnityEngine.Audio;
 
 public class MasterController : MonoBehaviour
 {
@@ -30,45 +28,64 @@ public class MasterController : MonoBehaviour
     void Start() {
         StartCoroutine(Timer());
         SceneManager.sceneLoaded += OnSceneLoad;
+        SceneManager.sceneUnloaded += OnSceneUnload;
     }
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode) {
         canCount = false;
-        if (!scene.name.Equals("Versier") && !scene.name.Equals("Map") && !scene.name.Equals("SplashTitle")) {
+        if (!scene.name.Equals("Versier") && !scene.name.Equals("Map") && !scene.name.Equals("SplashTitle") && !scene.name.Equals("Poepen") && !scene.name.Equals("GameOver")) {
             canCount = true;
+        }
+    }
+
+    void OnSceneUnload(Scene scene) {
+        if (scene.name.Equals("SplashTitle")) {
+            gameObject.GetComponent<MusicManager>().PlayNext();
         }
     }
 
     IEnumerator Timer() {
         while (true) {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.1f);
             if (canCount) {
                 counter++;
                 if (counter == 15) {
-                    SetGeilWaarde(10);
+                    SetGeilWaarde(15);
                 }
                 else if (counter == 25) {
-                    SetPoepWaarde(10);
+                    SetPoepWaarde(15);
                 }
                 else if (counter > 60) {
                     counter = 0;
-                    if (geilWaarde == 100 || poepWaarde == 100) {
-                        break;
+                    if (geilWaarde >= 100 || poepWaarde >= 100) {
+                        ResetValues();
+                        SceneManager.LoadScene("GameOver");
                     }
                 }   
             }
         }
-        SceneManager.LoadScene("GameOver");
+        
+    }
+
+    void ResetValues() {
+        InfoHolder.ResetValues();
+        geilWaarde = 50;
+        poepWaarde = 50;
+        counter = 0;
     }
 
     public void SetGeilWaarde(int valueToAdd) {
         geilWaarde = GetCorrectSliderValue(geilWaarde, valueToAdd);
-        onWaardeChanged(geilWaarde, "geil");
+        if (onWaardeChanged != null) {
+            onWaardeChanged(geilWaarde, "geil");
+        }
     }
 
     public void SetPoepWaarde(int valueToAdd) {
         poepWaarde = GetCorrectSliderValue(poepWaarde, valueToAdd);
-        onWaardeChanged(poepWaarde, "poep");
+        if (onWaardeChanged != null) {
+            onWaardeChanged(poepWaarde, "poep");
+        }
     }
 
     public int GetWaarde(string waardeNaam) {

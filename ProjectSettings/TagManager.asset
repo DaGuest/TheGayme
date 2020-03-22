@@ -7,6 +7,10 @@ TagManager:
   - poepplek
   - poepzoom
   - enemy
+  - Wall
+  - TopWall
+  - Ghost
+  - Gas
   layers:
   - Default
   - TransparentFX
@@ -16,9 +20,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Edge
+  - Bullet
   - 
   - 
   - 
@@ -41,6 +45,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1838311661
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VoorBackground
+    uniqueID: 4191098311
+    locked: 0
+  - name: TV
+    uniqueID: 40034741
+    locked: 0
+  - name: AchterPlayer
+    uniqueID: 405459445
+    locked: 0
+  - name: Player
+    uniqueID: 3708835957
+    locked: 0
+  - name: VoorPlayer
+    uniqueID: 3166390597
     locked: 0

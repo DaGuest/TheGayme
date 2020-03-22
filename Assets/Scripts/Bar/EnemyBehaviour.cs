@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyBehaviour : NPCBehaviour {
-	private bool originalFlip;
 	private CharInfo charInfo;
 
 	void Awake() {
-		if (InfoHolder.playerInfoLoaded && InfoHolder.GetEnemyInfo().GetNaam().Equals(gameObject.name)) {
+		if (InfoHolder.playerInfoLoaded && InfoHolder.GetLastScene().Equals("Versier") && InfoHolder.GetEnemyInfo().GetNaam().Equals(gameObject.name)) {
 			charInfo = InfoHolder.GetEnemyInfo();
 		}
 		else {
@@ -18,9 +17,8 @@ public class EnemyBehaviour : NPCBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (charInfo.isFlirtable) {
-			setWalking(false);
-			originalFlip = gameObject.GetComponent<SpriteRenderer>().flipX;
-			gameObject.GetComponent<SpriteRenderer>().flipX = !collision.GetComponent<SpriteRenderer>().flipX;
+			SetWalking(false);
+			//gameObject.GetComponent<SpriteRenderer>().flipX = !collision.GetComponent<SpriteRenderer>().flipX;
 			InfoHolder.SetEnemyInfo(charInfo);
 			collision.GetComponent<Player>().SetBattle(true);
 		}
@@ -28,10 +26,14 @@ public class EnemyBehaviour : NPCBehaviour {
 
 	void OnTriggerExit2D(Collider2D collision) {
 		if (charInfo.isFlirtable) {
-			setWalking(true);
-			gameObject.GetComponent<SpriteRenderer>().flipX = originalFlip;
+			SetWalking(true);
 			InfoHolder.SetEnemyInfo(null);
 			collision.GetComponent<Player>().SetBattle(false);
 		}
+	}
+
+	private void OnTriggerStay2D(Collider2D other) {
+		Vector2 direction = transform.position - other.transform.position;
+		gameObject.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
 	}
 }

@@ -6,38 +6,48 @@ using UnityEngine.UI;
 public class SplashLoader : MonoBehaviour
 {
     private ExitTo fader;
-    public int timeToShow = 5;
+    public float timeToShow = 5;
     public bool lastSlide = false;
     public bool gameover = false;
+    MasterController masterController;
+    bool canControl = false;
 
-    void Awake() {
+    void Start()
+    {
         fader = gameObject.GetComponent<ExitTo>();
-    }
-
-    void Start() {
-        if (!lastSlide) {
-            StartCoroutine(ToSplash());
-        }
-        if (gameover) {
+        masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
+        StartCoroutine(ToSplash());
+        if (gameover)
+        {
             Text text = GameObject.FindObjectOfType<Text>();
-            MasterController masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
-            string gameoverWaarde = "TOO MUCH" + ((masterController.poepWaarde == 100) ? "POO!\n" : "GEILHEID!\n");
+            string gameoverWaarde = "TOO MUCH " + ((masterController.poepWaarde == 100) ? "POO!\n" : "GEILHEID!\n");
             long score = (long)Time.time;
             text.text = "GAME OVER\n" + gameoverWaarde + "SCORE: " + score;
         }
     }
 
-    void Update() {
-        if (lastSlide) {
-            if (Input.GetKeyDown(KeyCode.Space)) {
+    void Update()
+    {
+        if (canControl)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
                 StartCoroutine(fader.FadeOut());
             }
         }
     }
 
 
-    IEnumerator ToSplash() {
+    IEnumerator ToSplash()
+    {
         yield return new WaitForSeconds(timeToShow);
-        StartCoroutine(fader.FadeOut());
+        if (!lastSlide)
+        {
+            StartCoroutine(fader.FadeOut());
+        }
+        else {
+            canControl = true;
+        }
+
     }
 }

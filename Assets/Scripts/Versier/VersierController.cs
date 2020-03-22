@@ -14,6 +14,7 @@ public class VersierController : MonoBehaviour {
 	[SerializeField] PlayerObject tegenstander = null;
 	[SerializeField] Animator transitionAnimator = null;
 
+	MasterController masterController;
 	bool isPlayerTurn = true;  //true = player, false = tegenstander 
 	bool tekstComplete = false;
 	bool sliderComplete = false;
@@ -27,6 +28,7 @@ public class VersierController : MonoBehaviour {
 	}
 
 	void Start() {
+		masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
 		flirtMenu.LoadFlirts(player.GetActionNamen());
 		tegenstanderHealthBar.SetNaam(tegenstander.GetNaam());
 		player.onHealthChange += playerHealthBar.setHealthSlider;
@@ -174,7 +176,7 @@ public class VersierController : MonoBehaviour {
 		playerToDie.DeathAnimation();
 		windowGroot.QueueMessage(playerToDie.GetNaam() + " fainted!");
 		if (!playerToDie.tag.Equals("Player")) {
-			InfoHolder.SetGeilLevel(InfoHolder.GetGeilLevel() - playerToDie.GetFlirtReward());
+			masterController.SetGeilWaarde(-playerToDie.GetFlirtReward());
 			if (player.LearnAction(playerToDie.GetFlirtActionReward())) {
 				windowGroot.QueueMessage(player.GetNaam() + " learned " + playerToDie.GetFlirtActionReward().Key);
 			}

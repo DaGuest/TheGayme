@@ -76,19 +76,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	//Nodig voor Huis scene
-	public void SetLayer() {
-		if (transform.position.y >= 2.9f) {
-			playerSpriteRenderer.sortingOrder = 0;
-		}
-		else if (transform.position.y > -2.4f && transform.position.y < 2.9f) {
-			playerSpriteRenderer.sortingOrder = 1;
-		}
-		else {
-			playerSpriteRenderer.sortingOrder = 3;
-		}
-	}
-
 	public void poepenAan() {
 		transform.position = poepPlek;
 		playerSpriteRenderer.flipX = false;

@@ -13,13 +13,13 @@ public class DeurTrigger : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other) {
 		deurOpen = true;
-		deurPost.sortingOrder = 2;
-		badkamer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+		deurPost.sortingLayerName = "VoorPlayer";
+		badkamer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		deurPost.sortingOrder = -1;
+		deurPost.sortingLayerName = "Background";
 		deurOpen = false;
-		badkamer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+		badkamer.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
 	}
 }

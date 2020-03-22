@@ -9,7 +9,6 @@ public class BarController : MonoBehaviour {
     public Animator battleAnimator;
     public Player player;
     public Text spacebarText;
-    private MasterController masterController;
 
     void Awake() {
         Transform playerTransform = player.GetComponent<Transform>();
@@ -17,7 +16,6 @@ public class BarController : MonoBehaviour {
         if (!InfoHolder.GetLastScene().Equals("Map") && startPosition != Vector3.zero ) {
             playerTransform.position = startPosition;
         }
-        masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
     }
 	
     void Start() {

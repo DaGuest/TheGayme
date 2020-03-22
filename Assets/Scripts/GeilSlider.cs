@@ -11,14 +11,11 @@ public class GeilSlider : MonoBehaviour
     bool throbbing = false;
     MasterController masterController;
     
-    void Awake() {
+    void Start() {
         masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
         penisImage = gameObject.GetComponent<Image>();
         geilWaarde = masterController.geilWaarde;
         ChangeState();
-    }
-
-    void Start() {
         SubscribeToBehaviours();
     }
 

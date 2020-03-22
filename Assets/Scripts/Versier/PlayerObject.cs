@@ -31,7 +31,7 @@ public class PlayerObject : MonoBehaviour {
 	public bool LearnAction(KeyValuePair<string, int> action) {
 		bool learned = charInfo.AddAction(action);
 		if (learned) {
-			charInfo.AddHealth(charInfo.GetFlirtReward());
+			charInfo.AddHealth(charInfo.GetFlirtReward() / 2);
 			InfoHolder.SetPlayerInfo(charInfo);
 		}
 		return learned;

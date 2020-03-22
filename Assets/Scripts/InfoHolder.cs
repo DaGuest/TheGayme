@@ -11,6 +11,7 @@ public static class InfoHolder {
 	static int poeplevel = 50;
 	static int geillevel = 50;
 	static string lastScene = "";
+	public static bool showUitleg = true;
 
 	public static void SetPlayerInfo(CharInfo playerInfo) {
 		playerCharInfo = playerInfo;
@@ -45,14 +46,6 @@ public static class InfoHolder {
 		return barPosition;
 	}
 
-	public static void SetPoepLevel(int value) {
-		poeplevel = value;
-	}
-
-	public static int GetPoepLevel() {
-		return poeplevel;
-	}
-
 	public static void SetGeilLevel(int value) {
 		geillevel = value;
 	}
@@ -67,5 +60,13 @@ public static class InfoHolder {
 
 	public static void SetLastScene(string sceneName) {
 		lastScene = sceneName;
+	}
+
+	public static void ResetValues() {
+		mapPosition = Vector3.zero;
+		barPosition = Vector3.zero;
+		playerInfoLoaded = false;
+		showUitleg = true;
+		lastScene = "";
 	}
 }

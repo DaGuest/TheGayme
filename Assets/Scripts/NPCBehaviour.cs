@@ -2,48 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCBehaviour : MonoBehaviour {
+public class NPCBehaviour : MonoBehaviour
+{
     private Vector2 startPosition;
     public float walkBoundary = 1.5f;
-    private Vector2 moveDirection = Vector2.right;
+    public Vector2 moveDirection = Vector2.right;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private int pauseCounter = 100;
-    private bool walking = true;
+    private bool stop, walking = true;
+    private float moveSpeed = 2f;
 
-	void Start() {
+    private void Start()
+    {
         startPosition = transform.position;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
     }
 
-    void Update() {
-        move();
+    void Update()
+    {
+        Move();
     }
 
-    void move() {
-        if (!walking) {
-            animator.SetBool("Walk", false);
-        }
-        else if (Vector2.Distance(transform.position, startPosition) > walkBoundary) {
-            if (animator.GetBool("Walk") == true) {
-                animator.SetBool("Walk", false);
+    void Move()
+    {
+        animator.SetBool("Walk", walking);
+        if (walking)
+        {
+            if (Vector2.Distance(transform.position, startPosition) > walkBoundary)
+            {
+                walking = false;
+                StartCoroutine(PauseWalk());
             }
-            pauseCounter -= 1;
-            if (pauseCounter == 0) {
-                moveDirection *= -1;
-                spriteRenderer.flipX = !spriteRenderer.flipX;
-                pauseCounter = 100;
-                transform.Translate(moveDirection * 0.05f);
-                animator.SetBool("Walk", true);
-            }
-        }
-        else {
-            transform.Translate(moveDirection * 0.05f);
+            spriteRenderer.flipX = moveDirection.x > 0;
+            transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
         }
     }
 
-    protected void setWalking(bool value) {
+    IEnumerator PauseWalk()
+    {
+        yield return new WaitForSeconds(1f);
+        moveDirection *= -1;
+        startPosition = transform.position;
+        walking = true;
+    }
+
+    protected void SetWalking(bool value)
+    {
         walking = value;
+        StopAllCoroutines();
     }
 }
