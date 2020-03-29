@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Intro/PressSpace.unity
+    guid: 3eb3ba0d83d0f6b439b0f9b483bb9b4e
+  - enabled: 1
     path: Assets/Scenes/Intro/SplashProd.unity
     guid: a4a9a7d6f5cc10b4b88e4afa4bc12c84
   - enabled: 1

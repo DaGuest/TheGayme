@@ -18,7 +18,6 @@ public class EnemyBehaviour : NPCBehaviour {
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (charInfo.isFlirtable) {
 			SetWalking(false);
-			//gameObject.GetComponent<SpriteRenderer>().flipX = !collision.GetComponent<SpriteRenderer>().flipX;
 			InfoHolder.SetEnemyInfo(charInfo);
 			collision.GetComponent<Player>().SetBattle(true);
 		}

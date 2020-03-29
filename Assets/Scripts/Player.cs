@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	Animator anim = null;
 	SpriteRenderer playerSpriteRenderer;
 	bool poepAble = false;
+	bool gamAble = false;
 	Vector3 poepPlek;
 	bool battle;
 	Sprite tegenstanderSprite;
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour {
 	public OnBattle onBattle;
 	public delegate void OnPoepen();
 	public OnPoepen onPoepen;
+	public delegate void OnGamen();
+	public OnPoepen onGamen;
 
 	void Awake() {
 		canMove = true;
@@ -42,6 +45,10 @@ public class Player : MonoBehaviour {
 			else if (battle) {
 				onBattle();
 				canMove = false;
+			}
+			else if (gamAble) {
+				anim.SetTrigger("gamen");
+				onGamen();
 			}
 		}
 	}
@@ -92,6 +99,11 @@ public class Player : MonoBehaviour {
 	public void SetBattle(bool value) {
 		battle = value;
 		onBattleReady(value, "START FLIRTING!");
+	}
+
+	public void SetGamen(bool value) {
+		gamAble = value;
+		onBattleReady(value, "START GAMING!");
 	}
 
 	public void SetMoveable(bool value) {

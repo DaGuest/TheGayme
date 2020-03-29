@@ -44,6 +44,9 @@ public class PooController : MonoBehaviour
         else {
             StartCoroutine(endGame());
         }
+    }
+
+    void FixedUpdate() {
         if (movable) {
             player.Move();
         }
@@ -62,7 +65,7 @@ public class PooController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         fadeAnim.SetTrigger("fadeout");
         yield return new WaitForSeconds(1.2f);
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>().poepWaarde = 10;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>().SetPoepWaarde(-30);
         SceneManager.LoadScene(InfoHolder.GetLastScene());
     }
 

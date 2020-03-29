@@ -8,8 +8,6 @@ public static class InfoHolder {
 	static CharInfo tegenstanderCharInfo;
 	static Vector3 mapPosition;
 	static Vector3 barPosition;
-	static int poeplevel = 50;
-	static int geillevel = 50;
 	static string lastScene = "";
 	public static bool showUitleg = true;
 
@@ -44,14 +42,6 @@ public static class InfoHolder {
 
 	public static Vector3 GetBarPosition() {
 		return barPosition;
-	}
-
-	public static void SetGeilLevel(int value) {
-		geillevel = value;
-	}
-
-	public static int GetGeilLevel() {
-		return geillevel;
 	}
 
 	public static string GetLastScene() {

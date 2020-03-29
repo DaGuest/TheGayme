@@ -22,10 +22,6 @@ public class PooPlayer : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         FlipPlayer();
         animator.SetFloat("Speed", movement.sqrMagnitude);
-    }
-
-    void FixedUpdate()
-    {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 

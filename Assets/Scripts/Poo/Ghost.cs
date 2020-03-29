@@ -6,6 +6,7 @@ public class Ghost : MonoBehaviour
 {
     public Transform target;
     public float moveSpeed = 5;
+    public ParticleSystem hitParticles;
     Rigidbody2D rb;
     float force = 4;
 

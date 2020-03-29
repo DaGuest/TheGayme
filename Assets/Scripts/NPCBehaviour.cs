@@ -11,6 +11,7 @@ public class NPCBehaviour : MonoBehaviour
     private Animator animator;
     private bool stop, walking = true;
     private float moveSpeed = 2f;
+    public bool canWalk = true;
 
     private void Start()
     {
@@ -26,16 +27,18 @@ public class NPCBehaviour : MonoBehaviour
 
     void Move()
     {
-        animator.SetBool("Walk", walking);
-        if (walking)
-        {
-            if (Vector2.Distance(transform.position, startPosition) > walkBoundary)
+        if (canWalk) {
+            animator.SetBool("Walk", walking);
+            if (walking)
             {
-                walking = false;
-                StartCoroutine(PauseWalk());
+                if (Vector2.Distance(transform.position, startPosition) > walkBoundary)
+                {
+                    walking = false;
+                    StartCoroutine(PauseWalk());
+                }
+                spriteRenderer.flipX = moveDirection.x > 0;
+                transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
             }
-            spriteRenderer.flipX = moveDirection.x > 0;
-            transform.Translate(moveDirection * Time.deltaTime * moveSpeed);
         }
     }
 

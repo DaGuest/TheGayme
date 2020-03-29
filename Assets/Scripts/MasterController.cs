@@ -14,6 +14,7 @@ public class MasterController : MonoBehaviour
     public int poepWaarde;
     public int counter = 0;
     bool canCount = false;
+    MusicManager musicManager;
     
     void Awake() {
         if (!created) {
@@ -26,9 +27,9 @@ public class MasterController : MonoBehaviour
     }
 
     void Start() {
+        musicManager = gameObject.GetComponent<MusicManager>();
         StartCoroutine(Timer());
         SceneManager.sceneLoaded += OnSceneLoad;
-        SceneManager.sceneUnloaded += OnSceneUnload;
     }
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode) {
@@ -36,24 +37,19 @@ public class MasterController : MonoBehaviour
         if (!scene.name.Equals("Versier") && !scene.name.Equals("Map") && !scene.name.Equals("SplashTitle") && !scene.name.Equals("Poepen") && !scene.name.Equals("GameOver")) {
             canCount = true;
         }
-    }
-
-    void OnSceneUnload(Scene scene) {
-        if (scene.name.Equals("SplashTitle")) {
-            gameObject.GetComponent<MusicManager>().PlayNext();
-        }
+        musicManager.PlaySceneSong(scene.name);
     }
 
     IEnumerator Timer() {
         while (true) {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(1f);
             if (canCount) {
                 counter++;
                 if (counter == 15) {
                     SetGeilWaarde(15);
                 }
                 else if (counter == 25) {
-                    SetPoepWaarde(15);
+                    SetPoepWaarde(10);
                 }
                 else if (counter > 60) {
                     counter = 0;

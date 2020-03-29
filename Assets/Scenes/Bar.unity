@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 6
-  health: 25
+  health: 24
   sprite: {fileID: 0}
   actionNamen:
   - BIG BOOTY
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64499179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.346838, y: -14.203928, z: 0}
+  m_LocalPosition: {x: -5.15, y: -12.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 317415561}
@@ -413,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkBoundary: 3
   moveDirection: {x: 1, y: 0}
+  canWalk: 1
 --- !u!61 &64499186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1081,6 +1082,7 @@ GameObject:
   - component: {fileID: 322004056}
   - component: {fileID: 322004055}
   - component: {fileID: 322004052}
+  - component: {fileID: 322004053}
   m_Layer: 0
   m_Name: STRIPPER
   m_TagString: Untagged
@@ -1106,13 +1108,28 @@ MonoBehaviour:
   actionNamen:
   - DANCE
   - POLE CLAMP
-  actionDamage: 060000000a000000
-  weakness: WINK
+  actionDamage: 080000000a000000
+  weakness: NOTHING
   strength: SHOW PENIS
-  flirtReward: 10
-  actionRewardNaam: DANCE
-  actionRewardDamage: 7
+  flirtReward: 50
+  actionRewardNaam: 
+  actionRewardDamage: 0
   isFlirtable: 1
+--- !u!114 &322004053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322004051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567da4de850f6324aa87d976b803992c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkBoundary: 0
+  moveDirection: {x: 0, y: 0}
+  canWalk: 0
 --- !u!61 &322004055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1123,10 +1140,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.046488583}
+  m_Offset: {x: 0, y: -2.64}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1137,7 +1154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.6070229}
+  m_Size: {x: 1.92, y: 1.6070229}
   m_EdgeRadius: 0
 --- !u!95 &322004056
 Animator:
@@ -1459,7 +1476,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.6
+  m_Intensity: 0.45
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: c715cff9
   m_LightCookieSprite: {fileID: 21300000, guid: d876c0c4dc1004d4d8649a6da3b1c090,
@@ -1580,6 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkBoundary: 1.5
   moveDirection: {x: 1, y: 0}
+  canWalk: 1
 --- !u!95 &554403795
 Animator:
   serializedVersion: 3
@@ -1729,13 +1747,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 8
-  health: 35
+  health: 45
   sprite: {fileID: 0}
   actionNamen:
   - TALK
   - SHOW PENIS
   - PLAY PORN
-  actionDamage: 04000000070000000a000000
+  actionDamage: 07000000080000000a000000
   weakness: SHOW PENIS
   strength: TALK
   flirtReward: 50
@@ -1858,6 +1876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67808af2f9635684f8eaf0acaa917b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerBehaviour: 
 --- !u!61 &700181225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2805,6 +2824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkBoundary: 0.5
   moveDirection: {x: 1, y: 0}
+  canWalk: 1
 --- !u!61 &1027066463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2928,7 +2948,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029154778, y: -0.020829678}
+  m_Offset: {x: -1.39, y: -0.020829678}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2954,16 +2974,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 10
-  health: 50
+  health: 27
   sprite: {fileID: 0}
   actionNamen:
-  - WINK
-  - SHOW BOOB
   - PUPPY EYES
-  actionDamage: 040000000500000007000000
-  weakness: WINK
-  strength: PLAY PORN
-  flirtReward: 10
+  actionDamage: 0f000000
+  weakness: NOTHING
+  strength: SHOW PENIS
+  flirtReward: 50
   actionRewardNaam: 
   actionRewardDamage: 0
   isFlirtable: 1
@@ -5559,7 +5577,7 @@ MonoBehaviour:
   strength: 
   flirtReward: 20
   actionRewardNaam: WINK
-  actionRewardDamage: 5
+  actionRewardDamage: 9
   isFlirtable: 1
 --- !u!114 &1807016803
 MonoBehaviour:
@@ -5575,6 +5593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkBoundary: 2.5
   moveDirection: {x: 1, y: 0}
+  canWalk: 1
 --- !u!1 &1807291162
 GameObject:
   m_ObjectHideFlags: 0
@@ -5943,32 +5962,32 @@ PrefabInstance:
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4254468432518400879, guid: e880eebd552a0e642933c0d091eacdc8,
         type: 3}

@@ -15,10 +15,10 @@ public class SplashLoader : MonoBehaviour
     void Start()
     {
         fader = gameObject.GetComponent<ExitTo>();
-        masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
         StartCoroutine(ToSplash());
         if (gameover)
         {
+            masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
             Text text = GameObject.FindObjectOfType<Text>();
             string gameoverWaarde = "TOO MUCH " + ((masterController.poepWaarde == 100) ? "POO!\n" : "GEILHEID!\n");
             long score = (long)Time.time;

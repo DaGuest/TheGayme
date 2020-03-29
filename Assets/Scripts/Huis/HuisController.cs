@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class HuisController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class HuisController : MonoBehaviour
     public Player player;
     public TrapLayers trap;
     public Text spacebarText;
+    public Transform gamePosition;
+    public Animator animator;
+    public Light2D tvLight;
+    bool canMove = true;
+    Vector2 currentPosition;
 
     void Start() {
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
@@ -24,6 +30,7 @@ public class HuisController : MonoBehaviour
     void SubScribeToBehaviours() {
         player.onBattleReady += BattleReady;
         player.onPoepen += StartPoepen;
+        player.onGamen += StartGamen;
     }
 
     void BattleReady(bool value, string text) {
@@ -51,5 +58,30 @@ public class HuisController : MonoBehaviour
         yield return new WaitForSeconds(3.8f);
         InfoHolder.SetLastScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("Poepen");
+    }
+
+    void StartGamen() {
+        player.SetMoveable(false);
+        currentPosition = player.transform.position;
+        player.transform.position = gamePosition.position;
+        player.GetComponent<Rigidbody2D>().isKinematic = true;
+        StartCoroutine(Gamen());
+    }
+
+    IEnumerator Gamen() {
+        while (tvLight.intensity < 0.5f) {
+            tvLight.intensity += 0.05f;
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("fadeout");
+        yield return new WaitForSeconds(5f);
+        player.transform.position = currentPosition;
+        player.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        player.SetMoveable(true);
+        while (tvLight.intensity > 0) {
+            tvLight.intensity -= 0.05f;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

@@ -29,12 +29,22 @@ public class PlayerObject : MonoBehaviour {
 	}
 
 	public bool LearnAction(KeyValuePair<string, int> action) {
-		bool learned = charInfo.AddAction(action);
+		bool learned = false;
+		if (!action.Key.Equals("")) {
+			learned = charInfo.AddAction(action);
+		}
 		if (learned) {
-			charInfo.AddHealth(charInfo.GetFlirtReward() / 2);
 			InfoHolder.SetPlayerInfo(charInfo);
 		}
 		return learned;
+	}
+
+	public bool GetIsFlirtable() {
+		return charInfo.isFlirtable;
+	}
+
+	public void SetIsFlirtable(bool value) {
+		charInfo.isFlirtable = value;
 	}
 
 	public string GetNaam() {
@@ -72,6 +82,10 @@ public class PlayerObject : MonoBehaviour {
 
 	public float GetHealth() {
 		return health;
+	}
+
+	public void AddHealth(int healthToAdd) {
+		charInfo.AddHealth(healthToAdd);
 	}
 
 	public int GetFlirtReward() {

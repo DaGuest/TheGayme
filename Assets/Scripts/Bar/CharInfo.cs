@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CharInfo : MonoBehaviour {
     string naam;
-    [SerializeField] int level = 5;
-    [SerializeField] int health  = 10;
+    public int level = 5;
+    public int health  = 10;
     [SerializeField] Sprite sprite = null;
     List<Action> actions = new List<Action>();
-    [SerializeField] string[] actionNamen = null;
-    [SerializeField] int[] actionDamage = null;
+    public string[] actionNamen = null;
+    public int[] actionDamage = null;
     [SerializeField] string weakness = null;
     [SerializeField] string strength = null;
     [SerializeField] int flirtReward = 10;
@@ -31,10 +31,6 @@ public class CharInfo : MonoBehaviour {
             Action actionToAdd = new Action(actionNamen[i], actionDamage[i]);
             actions.Add(actionToAdd);
         }
-    }
-
-    void AddExtraAction() {
-
     }
 
     public string GetNaam() {
