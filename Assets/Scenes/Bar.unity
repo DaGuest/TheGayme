@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -284,7 +284,7 @@ MonoBehaviour:
   - BIG BOOTY
   actionDamage: 08000000
   weakness: WINK
-  strength: CARD TRICK
+  strength: TALK
   flirtReward: 30
   actionRewardNaam: SHOW PENIS
   actionRewardDamage: 8
@@ -1103,14 +1103,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 6
-  health: 25
+  health: 30
   sprite: {fileID: 0}
   actionNamen:
   - DANCE
   - POLE CLAMP
-  actionDamage: 080000000a000000
-  weakness: NOTHING
-  strength: SHOW PENIS
+  actionDamage: 0d0000000f000000
+  weakness: TALK
+  strength: WINK
   flirtReward: 50
   actionRewardNaam: 
   actionRewardDamage: 0
@@ -1675,7 +1675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554403793}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.233162, y: -0.06692767, z: 0}
+  m_LocalPosition: {x: 5.233162, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1274819280}
@@ -1750,10 +1750,9 @@ MonoBehaviour:
   health: 45
   sprite: {fileID: 0}
   actionNamen:
-  - TALK
-  - SHOW PENIS
   - PLAY PORN
-  actionDamage: 07000000080000000a000000
+  - TOUCH NIPPLE
+  actionDamage: 0c0000000a000000
   weakness: SHOW PENIS
   strength: TALK
   flirtReward: 50
@@ -1876,7 +1875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67808af2f9635684f8eaf0acaa917b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBehaviour: 
+  triggerBehaviour: poepen
 --- !u!61 &700181225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2804,7 +2803,7 @@ GameObject:
   - component: {fileID: 1027066462}
   - component: {fileID: 1027066468}
   m_Layer: 0
-  m_Name: SLETJE
+  m_Name: SCHATJE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2979,7 +2978,7 @@ MonoBehaviour:
   actionNamen:
   - PUPPY EYES
   actionDamage: 0f000000
-  weakness: NOTHING
+  weakness: TALK
   strength: SHOW PENIS
   flirtReward: 50
   actionRewardNaam: 
@@ -5572,7 +5571,7 @@ MonoBehaviour:
   actionNamen:
   - TALK
   - WINK
-  actionDamage: 0300000005000000
+  actionDamage: 0600000007000000
   weakness: TALK
   strength: 
   flirtReward: 20

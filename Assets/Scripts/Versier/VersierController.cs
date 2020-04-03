@@ -177,11 +177,11 @@ public class VersierController : MonoBehaviour {
 		windowGroot.QueueMessage(playerToDie.GetNaam() + " fainted!");
 		if (!playerToDie.tag.Equals("Player")) {
 			masterController.SetGeilWaarde(-playerToDie.GetFlirtReward());
+			if (playerToDie.GetIsFlirtable()) {
+				player.AddHealth(playerToDie.GetFlirtReward() / 2);
+				playerToDie.SetIsFlirtable(false);
+			}
 			if (!playerToDie.GetFlirtActionReward().Key.Equals("")) {
-				if (player.GetIsFlirtable()) {
-					player.AddHealth(playerToDie.GetFlirtReward() / 2);
-					playerToDie.SetIsFlirtable(false);
-				}
 				if (player.LearnAction(playerToDie.GetFlirtActionReward())) {
 					windowGroot.QueueMessage(player.GetNaam() + " learned " + playerToDie.GetFlirtActionReward().Key);
 				}

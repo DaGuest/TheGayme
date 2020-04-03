@@ -13,6 +13,8 @@ public class MasterController : MonoBehaviour
     public int geilWaarde;
     public int poepWaarde;
     public int counter = 0;
+    public int difficultyCounter = 0;
+    public float waitTime = 1f;
     bool canCount = false;
     MusicManager musicManager;
     
@@ -42,20 +44,25 @@ public class MasterController : MonoBehaviour
 
     IEnumerator Timer() {
         while (true) {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(waitTime);
             if (canCount) {
                 counter++;
-                if (counter == 15) {
-                    SetGeilWaarde(15);
+                if (counter == 15 || counter == 45) {
+                    SetGeilWaarde(10);
                 }
                 else if (counter == 25) {
-                    SetPoepWaarde(10);
+                    SetPoepWaarde(15);
                 }
                 else if (counter > 60) {
                     counter = 0;
+                    difficultyCounter++;
                     if (geilWaarde >= 100 || poepWaarde >= 100) {
                         ResetValues();
                         SceneManager.LoadScene("GameOver");
+                    }
+                    if (difficultyCounter >= 2) {
+                        difficultyCounter = 0;
+                        waitTime *= .8f;
                     }
                 }   
             }
