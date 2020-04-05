@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67808af2f9635684f8eaf0acaa917b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBehaviour: poepen
+  triggerBehaviour: 0
 --- !u!61 &631837877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67808af2f9635684f8eaf0acaa917b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerBehaviour: gamen
+  triggerBehaviour: 1
 --- !u!70 &681266547
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

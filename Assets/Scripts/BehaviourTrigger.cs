@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BehaviourTrigger : MonoBehaviour {
-	public string triggerBehaviour;
+	public int triggerBehaviour = 0;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		switch (triggerBehaviour) {
-			case "poepen":
-			other.GetComponent<Player>().SetPoepAble(true);
-			break;
-			case "gamen":
-			other.GetComponent<Player>().SetGamen(true);
-			break;
+			case 0:
+				other.GetComponent<Player>().SetPoepAble(true);
+				break;
+			case 1:
+				other.GetComponent<Player>().SetGamen(true);
+				break;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
 		switch (triggerBehaviour) {
-			case "poepen":
-			other.GetComponent<Player>().SetPoepAble(false);
-			break;
-			case "gamen":
-			other.GetComponent<Player>().SetGamen(false);
-			break;
+			case 0:
+				other.GetComponent<Player>().SetPoepAble(false);
+				break;
+			case 1:
+				other.GetComponent<Player>().SetGamen(false);
+				break;
 		}
 	}
 }
