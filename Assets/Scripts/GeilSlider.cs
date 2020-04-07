@@ -29,12 +29,12 @@ public class GeilSlider : MonoBehaviour
 
     void ChangeState() {
         int stateIndex = ((penisStates.Length * geilWaarde) / 100);
-        if (stateIndex == penisStates.Length - 2) {
+        if (stateIndex == penisStates.Length - 1) {
             throbbing = true;
             StopAllCoroutines();
             StartCoroutine(Throb());
         }
-        else if (stateIndex < penisStates.Length - 2) {
+        else if (stateIndex < penisStates.Length - 1) {
             throbbing = false;
             StopAllCoroutines();
             penisImage.sprite = penisStates[stateIndex];

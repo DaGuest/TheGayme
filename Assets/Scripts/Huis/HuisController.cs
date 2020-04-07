@@ -75,6 +75,7 @@ public class HuisController : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("fadeout");
+        animator.SetTrigger("fadeText");
         yield return new WaitForSeconds(5f);
         player.transform.position = currentPosition;
         player.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
