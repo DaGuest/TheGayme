@@ -20,7 +20,7 @@ public class SplashLoader : MonoBehaviour
         {
             masterController = GameObject.FindGameObjectWithTag("GameController").GetComponent<MasterController>();
             Text text = GameObject.FindObjectOfType<Text>();
-            string gameoverWaarde = "TOO MUCH " + ((masterController.poepWaarde == 100) ? "POO!\n" : "GEILHEID!\n");
+            string gameoverWaarde = "TOO MUCH " + ((masterController.gameOverTriggered) ? "POO!\n" : "GEILHEID!\n");
             long score = (long)Time.time;
             text.text = "GAME OVER\n" + gameoverWaarde + "SCORE: " + score;
         }

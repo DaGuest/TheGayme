@@ -12,6 +12,7 @@ public class MasterController : MonoBehaviour
     
     public int geilWaarde;
     public int poepWaarde;
+    public bool gameOverTriggered;
     public int counter = 0;
     public int difficultyCounter = 0;
     public float waitTime = 1f;
@@ -57,6 +58,7 @@ public class MasterController : MonoBehaviour
                     counter = 0;
                     difficultyCounter++;
                     if (geilWaarde >= 100 || poepWaarde >= 100) {
+                        gameOverTriggered = poepWaarde >= 100;
                         ResetValues();
                         SceneManager.LoadScene("GameOver");
                     }
