@@ -14,8 +14,8 @@ public class HuisController : MonoBehaviour
     public Transform gamePosition;
     public Animator animator;
     public Light2D tvLight;
-    bool canMove = true;
-    Vector2 currentPosition;
+    private Vector3 currentPosition;
+    private bool canMove = true;
 
     void Start() {
         poepZoom = GameObject.FindGameObjectWithTag("poepzoom").transform.position;
